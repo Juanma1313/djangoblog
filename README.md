@@ -1,37 +1,77 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Django Blog
 
-Welcome,
+## Step by step project setup
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+### Project User Story on Github
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+#### User Stories
+    - View post list: As a **Site User** I can **view a paginated list of posts** so that I can select one to read
+    - Open a post: As a **Site User** I can **click on a post** so that **I can read the full text**
+    - View likes: As a **Site User / Admin** I can **view the number of likes on each post** so that **I can see which is the most popular or viral**
+    - View comments: As a **Site User / Admin** I can **view comments on an individual post** so that **I can read the conversation**
+    - Account registration: As a **Site User** I can **register an account** so that **I can comment and like**
+    - Comment on a post: As a **Site User** I can **leave comments on a post** so that **I can be involved in the conversation**
+    - Like / Unlike: As a **Site User** I can **like or unlike a post** so that **I can interact with the content**
+    - Manage posts: As a **Site Admin** I can **create, read, update and delete posts** so that **I can manage my blog content**
+    - Create drafts: As a **Site Admin** I can **create draft posts** so that **I can finish writing the content later**
+    - Approve comments: As a **Site Admin** I can **approve or disapprove comments** so that **I can filter out objectionable comments**
 
-## Codeanywhere Reminders
+#### User Stories Project creation
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+1. Use github `Setup`->`Features`->`Issues`->`Setup Templates` button to create the `User Story` custom template as default user story template. 
+    - Template name: "`User Story`"
+    - About:  "`Default user story`"
+    - Template Content: "`As a **role** I can **capability** so that **received benefit**`"
+    - Issue default title: "`USER STORY: <TITLE>`"
+  
+2. Use github `Projects` menu option to create a new project named `Django Blob User Stories` with  `Board` template.
+3. From the project `To Do` list add `Isues` using the new `User Story` template to create all the the User Story items.
 
-`python3 -m http.server`
+#### Setting up de development environment under CodeAnywhere
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+1. Install Django
+    > For this project we have choosen django version 3
+    ```cli
+    pip3 install 'django<4'
+    ```
+2. Install Django supporting libraries
+   ```cli
+   pip3 install gunicorn
+   pip3 install dj_database_url==0.5.0      # PosgreSQL support libraries
+   pip3 install psycopg2                    # PosgreSQL connection libraries
+   pip3 install dj3-cloudinary-storage      # Cloudinary Support libraries 
+   pip3 install urllib3==1.26.15
+   ```
+   
+3. Create a new, blank Django project
+    > (Don’t forget the . )
+   ```cli
+    django-admin startproject codestar .
+    ```
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+4. Create a new Django app
+    - Create the new Django application
+        ```cli
+        python3 manage.py startapp blog
+        ```
+   - Add '`blog,`' to the list `INSTALLED_APPS` in file `codestar/settings.py`
+   - Migrate changes to the database 
+        ```cli
+        python3 manage.py migrate
+        ```
+5. Create s new external database
+    > We will use ElephantSQL as a database provider
 
-`http_server`
+    
+6. Deploy the empty app to Heroku
+   1. Create the _Heroku app
+   
+7. Set our project to use Cloudinary
+8. Set our project to use PostgreSQL
+9. Deploy a new, empty project to Heroku
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A button should appear to click: _Open Preview_ or _Open Browser_.
-
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
+ 
+### Setup Heroku 
 You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
 
 ---
