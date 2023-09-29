@@ -42,13 +42,11 @@
    pip3 install dj3-cloudinary-storage      # Cloudinary Support libraries 
    pip3 install urllib3==1.26.15
    ```
-   
 3. Create a new, blank Django project
     > (Don’t forget the . )
    ```cli
     django-admin startproject codestar .
     ```
-
 4. Create a new Django app
     - Create the new Django application
         ```cli
@@ -59,16 +57,41 @@
         ```cli
         python3 manage.py migrate
         ```
-5. Create s new external database
-    > We will use ElephantSQL as a database provider
+5. Test Django setup
+   - Start the server
+    >This first run may not work because the host is not authorized
+        ```cli
+        python3 manage.py runserver
+        ```
+   - If there was a DisallowedHost error, add the host to the list `ALLOWED_HOSTS` in file `codestar/settings.py`
 
+6. Create new external database
+    > We will use ElephantSQL as a database provider
+   1. Create/log in your ElephantSQL account (if you don't have one already)
+       - Navigate to ElephantSQL.com and click `Get a managed database today`
+       - Select `Try now for FREE` in the TINY TURTLE database plan
+       - Select `Log in with GitHub` and authorize ElephantSQL with your selected GitHub account
+       - In the Create new team form:
+           - Add a team name (your own name is fine)
+           - Read and agree to the Terms of Service
+           - Select Yes for GDPR
+           - Provide your email address
+           - Click “Create Team”
+           - Your account is supossed to be successfully created
+   2. Create New service Instance
+       - Setup your plan name (this is commonly the name of the project)
+       - Select your plan type ( use the Free plan)
+       - Select the region closest to your location (E.g. azure westeurope)
+       - confirm the instance creation
+   3. Select the new database instance from the dashboard and copy the database URL for later 
+    (e.g. `postgres://napnlvrl:REyrb2FxoDbJjXblSVvGmL1XQrGu8lbN@dumbo.db.elephantsql.com/napnlvrl`)
     
-6. Deploy the empty app to Heroku
+1. Deploy the empty app to Heroku
    1. Create the _Heroku app
    
-7. Set our project to use Cloudinary
-8. Set our project to use PostgreSQL
-9. Deploy a new, empty project to Heroku
+2. Set our project to use Cloudinary
+3. Set our project to use PostgreSQL
+4. Deploy a new, empty project to Heroku
 
  
 ### Setup Heroku 
