@@ -15,6 +15,7 @@ from pathlib import Path
 from django.contrib.messages import constants as messages
 import dj_database_url
 if os.path.isfile("env.py"):
+    print ("Running in local mode")
     import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,8 +32,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+if DEBUG:
+    print ("Running in DEBUG mode")
 
-ALLOWED_HOSTS = ['8000-juanma1313-djangoblog-b0ultf9joj.us2.codeanyapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['8000-juanma1313-djangoblog-b0ultf9joj.us2.codeanyapp.com', 'localhost']
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
@@ -85,7 +88,7 @@ ROOT_URLCONF = 'codestar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATES_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -104,16 +107,16 @@ WSGI_APPLICATION = 'codestar.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+#DATABASES = {
+#    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+#}
 
 
 # Password validation
